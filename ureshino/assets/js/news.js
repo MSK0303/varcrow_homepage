@@ -9,7 +9,7 @@
     match: '試合結果',
   };
 
-  function createNewsCard(item) {
+  function createNewsCard(item, headingLevel) {
     const article = document.createElement('article');
     article.className = 'news-card';
 
@@ -26,7 +26,7 @@
 
     meta.append(date, category);
 
-    const title = document.createElement('h3');
+    const title = document.createElement(`h${headingLevel}`);
     title.textContent = item.title;
 
     article.append(meta, title);
@@ -58,6 +58,7 @@
       String(right.date).localeCompare(String(left.date))
     );
     const visibleItems = Number.isFinite(limit) ? sortedItems.slice(0, limit) : sortedItems;
+    const headingLevel = container.dataset.newsHeadingLevel === '2' ? 2 : 3;
 
     container.replaceChildren();
     if (visibleItems.length === 0) {
@@ -69,7 +70,7 @@
     }
 
     const fragment = document.createDocumentFragment();
-    visibleItems.forEach((item) => fragment.append(createNewsCard(item)));
+    visibleItems.forEach((item) => fragment.append(createNewsCard(item, headingLevel)));
     container.append(fragment);
   }
 
