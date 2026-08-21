@@ -1,0 +1,27 @@
+# ===== 公開しないもの =====
+# リポジトリrootが varcrow.jp のドキュメントルートのため、
+# ここに含めたファイルは全世界に公開される。
+# 設計書・レビュー文書・検証スクリプトは公開対象外。
+
+docs/
+scripts/
+
+# ローカル作業用
+_work/
+_tmp/
+*.log
+
+# OS / エディタ
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+.vscode/
+.idea/
+
+# 画像編集の中間ファイル
+*.psd
+*.xcf
+*.ai
+*~
+*.bak
