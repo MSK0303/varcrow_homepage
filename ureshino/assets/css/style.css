@@ -943,8 +943,8 @@ th {
 }
 
 .instagram-panel__qr {
-  width: 160px;
-  height: 160px;
+  width: 192px;
+  height: 192px;
   padding: 8px;
   background: var(--c-text);
 }
