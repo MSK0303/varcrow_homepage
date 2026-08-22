@@ -83,7 +83,7 @@
 
   async function loadNews(container) {
     try {
-      const response = await fetch(NEWS_PATH);
+      const response = await fetch(NEWS_PATH, { cache: 'no-cache' });
       if (!response.ok) {
         throw new Error(`News request failed: ${response.status}`);
       }

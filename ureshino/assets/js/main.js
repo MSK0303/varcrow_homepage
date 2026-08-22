@@ -36,7 +36,7 @@
 
   async function loadConfig() {
     try {
-      const response = await fetch(CONFIG_PATH);
+      const response = await fetch(CONFIG_PATH, { cache: 'no-cache' });
       if (!response.ok) {
         throw new Error(`Config request failed: ${response.status}`);
       }
