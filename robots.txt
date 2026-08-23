@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://varcrow.jp/sitemap.xml
+Sitemap: https://varcrowfc.com/sitemap.xml
