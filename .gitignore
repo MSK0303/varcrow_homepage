@@ -9,6 +9,9 @@ scripts/
 # Coworkブリッジの出力先
 Claude outputs/
 
+# 発注者の支給元ファイル（加工前）
+assets/instagram/
+
 # ローカル作業用
 _work/
 _tmp/

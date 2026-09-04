@@ -1010,8 +1010,9 @@ th {
 }
 
 .instagram-panel__qr {
-  width: 192px;
-  height: 192px;
+  width: 100%;
+  max-width: 256px;
+  aspect-ratio: 1;
   padding: 8px;
   background: var(--c-text);
 }
@@ -1209,8 +1210,7 @@ th {
     padding-block: 96px 120px;
   }
 
-  .statement-grid,
-  .instagram-panel {
+  .statement-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1229,6 +1229,12 @@ th {
   }
 
   .sponsor-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 700px) {
+  .instagram-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
