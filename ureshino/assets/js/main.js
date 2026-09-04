@@ -9,18 +9,37 @@
     document.querySelectorAll('[data-config]').forEach((element) => {
       const key = element.dataset.config;
       const value = typeof config[key] === 'string' ? config[key].trim() : '';
+      const isForm = key.startsWith('form_');
+      const isExternal = /^https?:\/\//i.test(value);
+      const isInternal = /^\/(?!\/)/.test(value);
+      // Backslashes and control characters can turn an apparent internal path
+      // into an external URL when a browser normalizes it.
+      const isSafe = (isExternal || isInternal) && !/[\\\u0000-\u0020\u007f]/.test(value);
+      const formHint = isForm ? element.querySelector('.visually-hidden') : null;
+
+      if (isForm) {
+        element.removeAttribute('target');
+        element.removeAttribute('rel');
+        if (formHint) formHint.hidden = true;
+      }
 
       if (!value) {
-        if (element.hasAttribute('data-instagram')) {
+        if (element.hasAttribute('data-instagram') || key === 'form_admission_url') {
           element.hidden = true;
         }
         return;
       }
 
       if (element instanceof HTMLAnchorElement) {
+        if (!isSafe) return;
         element.href = value;
+        if (isForm && isExternal) {
+          element.setAttribute('target', '_blank');
+          element.setAttribute('rel', 'noopener');
+          if (formHint) formHint.hidden = false;
+        }
       }
-      if (element.hasAttribute('data-instagram')) {
+      if (element.hasAttribute('data-instagram') || key === 'form_admission_url') {
         element.hidden = false;
       }
     });
