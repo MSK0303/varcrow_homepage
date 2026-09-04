@@ -6,6 +6,9 @@
 docs/
 scripts/
 
+# Coworkブリッジの出力先
+Claude outputs/
+
 # ローカル作業用
 _work/
 _tmp/
